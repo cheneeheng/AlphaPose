@@ -5,12 +5,16 @@
 
 """API of detector"""
 from abc import ABC, abstractmethod
+import os
 
 
 def get_detector(opt=None):
     if opt.detector == 'yolo':
         from detector.yolo_api import YOLODetector
         from detector.yolo_cfg import cfg
+        if not os.path.exists(cfg.CONFIG):
+            cfg.CONFIG = "submodules/AlphaPose/" + cfg.CONFIG
+            cfg.WEIGHTS = "submodules/AlphaPose/" + cfg.WEIGHTS
         return YOLODetector(cfg, opt)
     elif 'yolox' in opt.detector:
         from detector.yolox_api import YOLOXDetector
@@ -19,10 +23,15 @@ def get_detector(opt=None):
             opt.detector = 'yolox-x'
         cfg.MODEL_NAME = opt.detector.lower()
         cfg.MODEL_WEIGHTS = f'detector/yolox/data/{opt.detector.lower().replace("-", "_")}.pth'
+        if not os.path.exists(cfg.MODEL_WEIGHTS):
+            cfg.MODEL_WEIGHTS = "submodules/AlphaPose/" + cfg.MODEL_WEIGHTS
         return YOLOXDetector(cfg, opt)
     elif opt.detector == 'tracker':
         from detector.tracker_api import Tracker
         from detector.tracker_cfg import cfg
+        if not os.path.exists(cfg.CONFIG):
+            cfg.CONFIG = "submodules/AlphaPose/" + cfg.CONFIG
+            cfg.WEIGHTS = "submodules/AlphaPose/" + cfg.WEIGHTS
         return Tracker(cfg, opt)
     elif opt.detector.startswith('efficientdet_d'):
         from detector.effdet_api import EffDetDetector

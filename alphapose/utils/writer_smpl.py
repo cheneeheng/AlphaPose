@@ -6,9 +6,10 @@ from queue import Queue
 import cv2
 import numpy as np
 import torch
-import torch.multiprocessing as mp
+# import torch.multiprocessing as mp
+from ..utils.mp_torch import *
 
-from alphapose.utils.pPose_nms import pose_nms, write_json
+from ..utils.pPose_nms import pose_nms, write_json
 
 DEFAULT_VIDEO_SAVE_OPT = {
     'savepath': 'examples/res/1.mp4',
