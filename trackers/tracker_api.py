@@ -21,6 +21,7 @@ import torch.nn as nn
 from .utils import *
 from .utils.log import logger
 from .utils.kalman_filter import KalmanFilter
+from .utils.utils import load_pretrained_weights
 from .tracking.matching import *
 from .tracking.basetrack import BaseTrack, TrackState
 from .utils.transform import build_transforms
