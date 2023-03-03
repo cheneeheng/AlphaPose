@@ -178,10 +178,10 @@ class DataWriter():
                     else:
                         from alphapose.utils.vis import vis_frame
                     img = vis_frame(orig_img, result, self.opt, self.vis_thres)
-                    img = np.concatenate([img, orig_img], axis=0)
-                    img = cv2.resize(
-                        img, (int(img.shape[1]*self.opt.final_img_scale),
-                              int(img.shape[0]*self.opt.final_img_scale)))
+                    # img = np.concatenate([img, orig_img], axis=0)
+                    # img = cv2.resize(
+                    #     img, (int(img.shape[1]*self.opt.final_img_scale),
+                    #           int(img.shape[0]*self.opt.final_img_scale)))
                     self.write_image(img, im_name, stream=stream if self.save_video else None)
 
     def write_image(self, img, im_name, stream=None):
