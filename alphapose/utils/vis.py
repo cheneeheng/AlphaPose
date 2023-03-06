@@ -244,7 +244,7 @@ def vis_frame_fast(frame, im_res, opt, vis_thres, format='coco'):
             
             cv2.rectangle(img, (int(bbox[0]), int(bbox[2])), (int(bbox[1]), int(bbox[3])), color, 2)
             if opt.tracking:
-                cv2.putText(img, str(human['idx']), (int(bbox[0]), int((bbox[2] + 26))), DEFAULT_FONT, 1, BLACK, 2)
+                cv2.putText(img, str(human['idx']), (int(bbox[0]), int((bbox[2] + 26))), DEFAULT_FONT, 1, color, 2)
         # Draw keypoints
         for n in range(kp_scores.shape[0]):
             if kp_scores[n] <= vis_thres[n]:
@@ -466,7 +466,7 @@ def vis_frame(frame, im_res, opt, vis_thres, format='coco'):
             # color = get_color_fast(int(abs(human['idx'][0][0])))
             cv2.rectangle(img, (int(bbox[0]), int(bbox[2])), (int(bbox[1]),int(bbox[3])), color, 1)
             if opt.tracking:
-                cv2.putText(img, str(human['idx']), (int(bbox[0]), int((bbox[2] + 26))), DEFAULT_FONT, 1, BLACK, 2)
+                cv2.putText(img, str(human['idx']), (int(bbox[0]), int((bbox[2] + 26))), DEFAULT_FONT, 1, color, 2)
 
         # Draw keypoints
         for n in range(kp_scores.shape[0]):
@@ -573,7 +573,7 @@ def vis_frame_smpl(frame, im_res, smpl_output, opt, vis_thres):
 
             cv2.rectangle(img, (int(bbox[0]), int(bbox[2])), (int(bbox[1]), int(bbox[3])), color, 2)
             if opt.tracking:
-                cv2.putText(img, str(human['idx']), (int(bbox[0]), int((bbox[2] + 26))), DEFAULT_FONT, 1, BLACK, 2)
+                cv2.putText(img, str(human['idx']), (int(bbox[0]), int((bbox[2] + 26))), DEFAULT_FONT, 1, color, 2)
 
         # Draw SMPL
         # princpt = [(bbox[0] + bbox[1]) / 2, (bbox[2] + bbox[3]) / 2]
@@ -687,7 +687,7 @@ def vis_frame_skeleton(frame, im_res, smpl_output, opt, vis_thres):
 
             cv2.rectangle(img, (int(bbox[0]), int(bbox[2])), (int(bbox[1]), int(bbox[3])), color, 2)
             if opt.tracking:
-                cv2.putText(img, str(human['idx']), (int(bbox[0]), int((bbox[2] + 26))), DEFAULT_FONT, 1, BLACK, 2)
+                cv2.putText(img, str(human['idx']), (int(bbox[0]), int((bbox[2] + 26))), DEFAULT_FONT, 1, color, 2)
 
         # Draw keypoints
         for n in range(len(l_pair)):
